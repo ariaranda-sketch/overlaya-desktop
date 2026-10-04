@@ -1,0 +1,52 @@
+{
+  "name": "overlaya-studio",
+  "productName": "Overlaya Studio",
+  "version": "0.1.0",
+  "description": "Overlaya Studio: stream overlays for TikTok LIVE",
+  "main": "main.js",
+  "author": "Overlaya",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "test-server": "node server.js --simulate",
+    "dist": "electron-builder --win --publish never"
+  },
+  "dependencies": {
+    "tiktok-live-connector": "^2.5.0",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "electron": "^44.0.0",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "com.overlaya.studio",
+    "productName": "Overlaya Studio",
+    "files": [
+      "main.js",
+      "server.js",
+      "tiktok.js",
+      "overlaya.html",
+      "icon.png",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "icon.ico",
+      "artifactName": "Overlaya-Studio-Setup-${version}.exe"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Overlaya Studio"
+    },
+    "asar": false
+  }
+}
